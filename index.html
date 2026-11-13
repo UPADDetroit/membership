@@ -482,7 +482,7 @@ async function validate(step){const msg=step.querySelector('.reg-step-message');
   const spouseHasData=spouse&&fields.some(f=>f.type!=='file'&&String(f.value||'').trim());
   for(const f of fields){if(f.type==='file'||f.type==='checkbox'||f.disabled)continue;
     let required=f.required;
-    if(spouse&&spouseHasData&&['spouseFirst','spouseLast','spouseOrigin'].includes(f.name))required=true;
+    if(spouse&&spouseHasData&&['spouseFirst','spouseLast'].includes(f.name))required=true;
     if(spouse&&!spouseHasData)required=false;
     if(required&&!f.value.trim()){f.focus();if(msg)msg.textContent='Please complete the required fields marked * before continuing.';return false;}
     if(f.value&&!f.checkValidity()){f.focus();if(msg)msg.textContent='Please check the highlighted field before continuing.';return false;}
